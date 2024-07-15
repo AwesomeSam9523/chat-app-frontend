@@ -70,7 +70,7 @@ export default function Chats() {
     return () => {
       socket.disconnect();
     };
-  }, [roomName]);
+  }, [roomName,name]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -79,7 +79,7 @@ export default function Chats() {
   }, [inbox]);
 
   if (Error) {
-    return <div className="text-white font-">Can't Connect.. Retry</div>;
+    return <div className="text-white font-">Cant Connect.. Retry</div>;
   }
 
   return (<>
