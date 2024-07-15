@@ -28,8 +28,6 @@ export default function Home() {
               {session.status === "authenticated" ? <div>Hey ! {session.data?.user?.name} 👋</div> : <div>Hey ! 👋</div>}
             </div>
             <div>Welcome to my app!</div>
-            {process.env.NEXTAUTH_SECRET}
-            hello
           </div>
 
           <div className="pt-2">Lets start by joining a room quickly and youll be able to chat in realtime</div>
