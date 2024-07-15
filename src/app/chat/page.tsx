@@ -42,7 +42,7 @@ export default function Chats() {
   };
 
   useEffect(() => {
-    const socket = io("http://localhost:3000/");
+    const socket = io(process.env.BACKEND_URL||"");
     socket.on("connect", () => {
       console.log("Socket connected");
       setSocket(socket);
