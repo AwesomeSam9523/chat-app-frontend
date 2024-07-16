@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google";
-import client from "../../../db/db";
+import getClient from "../../../db/db";
 
 export const NEXT_AUTH = {
     providers: [
@@ -41,6 +41,7 @@ export const NEXT_AUTH = {
             return session
         },
         async signIn({ profile }: any) {
+            const client = await getClient();
             console.log(profile)
             console.log(client)
             const userExist = await client.user.findUnique({
