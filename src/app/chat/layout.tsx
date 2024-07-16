@@ -13,8 +13,8 @@ export default function ChatLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${poppins_init.className} `}>
+    <html lang="en" className={poppins_init.variable}>
+      <body className={poppins_init.className}>
         {children}
       </body>
     </html>

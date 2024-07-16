@@ -1,5 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google";
+import client from "../../../db/db";
 
 export const NEXT_AUTH = {
     providers: [
@@ -32,12 +33,35 @@ export const NEXT_AUTH = {
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
 
-        session: ({ session, token, user }: any) => {
+        async session({ session, token, user }: any) {
             console.log(session)
             if (session && session.user) {
                 session.user.id = token.userId
             }
             return session
+        },
+        async signIn({ profile }: any) {
+            console.log(profile)
+            console.log(client)
+            const userExist = await client.user.findUnique({
+                where: {
+                    email: profile.email
+                }
+            })
+            if (!userExist) {
+                try {
+                    await client.user.create({
+                        data: {
+                            email: profile.email,
+                            name: profile.name,
+                        }
+                    })
+                }
+                catch(err){
+                    console.log("Error creating user",err);
+                }
+            }
+            return true
         }
     },
     pages: {

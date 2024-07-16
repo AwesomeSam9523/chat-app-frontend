@@ -25,7 +25,7 @@ export default function Home() {
         <div className="bg-white max-w-lg w-full py-8 rounded-lg shadow-lg">
           <div className="text-4xl font-bold">
             <div>
-              {session.status === "authenticated" ? <div>Hey ! {session.data?.user?.name} 👋</div> : <div>Hey ! 👋</div>}
+              {session.status === "authenticated" ? <div>Hey ! {session.data?.user?.name?.split(" ")[0]} 👋</div> : <div>Hey ! 👋</div>}
             </div>
             <div>Welcome to my app!</div>
           </div>

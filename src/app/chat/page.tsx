@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Socket, io } from "socket.io-client";
+import { createMessage } from "../actions/messages";
 
 export interface MessageObject {
   message: string;
@@ -33,8 +34,14 @@ export default function Chats() {
     return currentTime;
   };
 
-  const handleSendMessage = () => {
+  const handleSendMessage = async() => {
     if (socket) {
+      try{
+        await createMessage(message);
+      }
+      catch(e){
+        console.log("Error storing message",e);
+      }
       const currentTime = getTime();
       socket.emit("message", message, roomName, myId, currentTime, name);
       setMessage("");
