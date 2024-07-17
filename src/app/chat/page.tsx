@@ -101,7 +101,7 @@ export default function Chats() {
       <div className="flex flex-col max-w-2xl w-full h-[90vh] mt-8">
         <div className=" px-1 text-4xl ml-4">Room : {roomNameString}</div>
 
-        <div className="flex flex-col flex-grow bg-[#0D0D0D] p-8 overflow-y-auto shadow-lg rounded-xl   bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50  mx-4">
+        <div className="flex flex-col flex-grow bg-[#0D0D0D] p-8 overflow-y-auto shadow-lg rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50  mx-4">
           {inbox.map((messageObject, index) => (
             <TextMessage key={index} messageObject={messageObject} myId={myId} />
           ))}

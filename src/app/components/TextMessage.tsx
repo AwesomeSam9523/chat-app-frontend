@@ -9,11 +9,11 @@ interface TextMessageProps {
 
 export default function TextMessage({ messageObject, myId }: TextMessageProps) {
     return (
-        <div className="opacity-100">
+        <div>
             {messageObject.id === myId ?
                 <div className="flex flex-col">
                     <div className="flex justify-end mt-2 ">
-                        <div className="max-w-[45%] w-max bg-[#1A66FF] px-3 py-1.5 rounded-l-lg rounded-tr-lg overflow-wrap break-words">
+                        <div className="max-w-[45%] w-max bg-[#1A66FF] px-3 py-1.5 rounded-l-2xl rounded-tr-2xl overflow-wrap break-words">
                             <div className="flex flex-col">
                                 <div className="text-lg text-white px-2 py-1.5 ">
                                     {messageObject.message}
@@ -31,7 +31,7 @@ export default function TextMessage({ messageObject, myId }: TextMessageProps) {
                 :
                 <div className="flex flex-col">
                     <div className="flex justify-start mt-2">
-                        <div className="max-w-[45%] w-max bg-[#1B1B1B] px-3 py-1.5 rounded-r-lg rounded-tl-lg overflow-wrap break-words">
+                        <div className="max-w-[45%] w-max bg-[#1B1B1B] px-3 py-1.5 rounded-r-2xl rounded-tl-2xl overflow-wrap break-words">
                             <div className="flex flex-col">
                                 <div className="text-lg text-white px-2 py-1.5">
                                     {messageObject.message}
