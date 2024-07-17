@@ -34,7 +34,7 @@ export default function Home() {
               <div>Welcome to my app!</div>
             </div>
 
-            <div className="pt-2">Lets start by joining a room quickly and youll be able to chat in realtime</div>
+            <div className="pt-2 px-4">Lets start by joining a room quickly and youll be able to chat in realtime</div>
             <div className="flex flex-col justify-normal px-8 gap-4 mt-4">
               <input type="text" onChange={e => setName(e.target.value)} id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " placeholder="Username" required />
 
