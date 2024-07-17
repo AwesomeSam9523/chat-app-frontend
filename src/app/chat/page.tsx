@@ -27,6 +27,7 @@ export default function Chats() {
   const [myId, setMyId] = useState<string | undefined>("");
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const [usersConnected, setUsersConnected] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const roomNameString = JSON.stringify(roomName)
   const getTime = () => {
     const dateWithouthSecond = new Date();
@@ -48,9 +49,11 @@ export default function Chats() {
     }
   };
 
+
   useEffect(() => {
     const socket = io("https://chat-application-backend-d14i.onrender.com");
     socket.on("connect", () => {
+      setIsLoading(false)
       console.log("Socket connected");
       setSocket(socket);
       setMyId(socket.id);
@@ -87,6 +90,9 @@ export default function Chats() {
 
   if (Error) {
     return <div className="text-white font-">Cant Connect.. Retry</div>;
+  }
+  if(isLoading){
+    return <div>Loading.....</div>
   }
 
   return (<>
