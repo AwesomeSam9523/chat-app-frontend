@@ -13,7 +13,7 @@ export default function Signin() {
     const [email, setEmail] = useState("");
 
     return <div>
-        <div className="flex flex-col justify-center items-center h-screen bg-slate-300" >
+        <div className="flex flex-col justify-center items-center h-screen bg-slate-300" style={{backgroundImage:"url(background.jpg)", backgroundSize: "cover"}} >
             <div className="">
                 <div className="grid gap-6 mb-6 md:grid-cols-2 border  px-4 py-6 rounded-xl shadow-lg bg-white">
                     <div className="col-span-2 text-center font-medium text-4xl">

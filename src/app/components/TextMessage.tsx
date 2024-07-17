@@ -9,7 +9,7 @@ interface TextMessageProps {
 
 export default function TextMessage({ messageObject, myId }: TextMessageProps) {
     return (
-        <div>
+        <div className="opacity-100">
             {messageObject.id === myId ?
                 <div className="flex flex-col">
                     <div className="flex justify-end mt-2 ">

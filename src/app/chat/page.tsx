@@ -35,17 +35,18 @@ export default function Chats() {
     return currentTime;
   };
 
-  const handleSendMessage = async() => {
+  const handleSendMessage = async () => {
     if (socket) {
-      try{
-        await createMessage(message);
-      }
-      catch(e){
-        console.log("Error storing message",e);
-      }
+
       const currentTime = getTime();
       socket.emit("message", message, roomName, myId, currentTime, name);
       setMessage("");
+      try {
+        await createMessage(message);
+      }
+      catch (e) {
+        console.log("Error storing message", e);
+      }
     }
   };
 
@@ -80,7 +81,7 @@ export default function Chats() {
     return () => {
       socket.disconnect();
     };
-  }, [roomName,name]);
+  }, [roomName, name]);
 
   useEffect(() => {
     if (messagesEndRef.current) {
@@ -91,26 +92,27 @@ export default function Chats() {
   if (Error) {
     return <div className="text-white font-">Cant Connect.. Retry</div>;
   }
-  if(isLoading){
+  if (isLoading) {
     return <div>Loading.....</div>
   }
 
   return (<>
-    <div className="flex justify-center h-screen bg-[#222222] ">
+    <div className="flex justify-center h-screen bg-[#222222] " style={{ backgroundImage: `url(/background.jpg)`, backgroundSize: "cover" }}>
       <div className="flex flex-col max-w-2xl w-full h-[90vh] mt-8">
-        <div className="text-white px-1 text-4xl">Room : {roomNameString}</div>
+        <div className=" px-1 text-4xl ml-4">Room : {roomNameString}</div>
 
-        <div className="flex flex-col flex-grow bg-[#0D0D0D] p-8 overflow-y-auto shadow-md rounded-xl">
+        <div className="flex flex-col flex-grow bg-[#0D0D0D] p-8 overflow-y-auto shadow-lg rounded-xl   bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50  mx-4">
           {inbox.map((messageObject, index) => (
             <TextMessage key={index} messageObject={messageObject} myId={myId} />
           ))}
           <div ref={messagesEndRef} />
         </div>
-        <div className="flex justify-between gap-3 p-4 bg-[#0D0D0D] shadow-md rounded-xl mt-4">
+        <div className="flex justify-between gap-3 p-4 bg-[#0D0D0D] shadow-md rounded-xl mt-4 mx-4">
           <input
             type="text"
             value={message}
-            className="w-full px-3 py-1.5 resize-none bg-[#0D0D0D] text-white "
+            className="w-full px-3 py-1.5 resize-none text-white backdrop-filter backdrop-blur-sm border rounded-xl shadow-md border-none "
+            style={{ backgroundColor: '#0D0D0D' }}
             placeholder="Enter text"
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={(e) => {

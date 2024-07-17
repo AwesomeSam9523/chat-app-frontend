@@ -19,9 +19,11 @@ export default function Home() {
   }
 
   return (<>
-    <div className="h-screen bg-slate-300 w-full">
-      <AppBar />
-      <div className="text-center w-lvw flex justify-center mt-4">
+    <div className="h-screen bg-slate-300 w-full" style={{ backgroundImage: `url(/background2.jpg)`, backgroundSize: "cover" }}>
+      <div className="pt-4 px-4" >
+        <AppBar />
+      </div>
+      <div className="text-center w-lvw flex justify-center mt-4 ">
         <div className="bg-white max-w-lg w-full py-8 rounded-lg shadow-lg">
           <div className="text-4xl font-bold">
             <div>
