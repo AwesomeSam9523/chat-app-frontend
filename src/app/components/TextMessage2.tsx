@@ -1,29 +1,30 @@
-import { MessageObject } from "../chat/page";
+import { MessageObject } from "../therapist/page";
 
 interface TextMessageProps {
   messageObject: MessageObject;
-  myId: string | undefined;
+  myId: string;
 }
 
-export default function TextMessage({ messageObject, myId }: TextMessageProps) {
-    
-  // Checking against the messageObject.username to match the user
-  const isMyMessage = messageObject.id === myId;
+export default function TextMessage2({
+  messageObject,
+  myId,
+}: TextMessageProps) {
+  // Check if the message is from the bot or the user
+  const isMyMessage = messageObject.id === "user"
   const textMessage = messageObject.message;
   const time = messageObject.time;
-  
-  
-  
+  console.log("Message Object:", messageObject);
+  console.log("My ID:", myId);
   return (
     <div>
-        
       {isMyMessage ? (
         <div className="flex flex-col">
-            
           <div className="flex justify-end mt-2">
             <div className="max-w-[45%] w-max bg-[#1A66FF] px-3 py-1.5 rounded-l-xl rounded-tr-xl overflow-wrap break-words">
               <div className="flex flex-col">
-                <div className="text-lg text-white px-2 py-1.5">{JSON.stringify(textMessage)}</div>
+                <div className="text-lg text-white px-2 py-1.5">
+                  {textMessage}
+                </div>
               </div>
             </div>
           </div>
@@ -38,7 +39,9 @@ export default function TextMessage({ messageObject, myId }: TextMessageProps) {
           <div className="flex justify-start mt-2">
             <div className="max-w-[45%] w-max bg-[#1B1B1B] px-3 py-1.5 rounded-r-xl rounded-tl-xl overflow-wrap break-words">
               <div className="flex flex-col">
-                <div className="text-lg text-white px-2 py-1.5">{textMessage}</div>
+                <div className="text-lg text-white px-2 py-1.5">
+                  {textMessage}
+                </div>
               </div>
             </div>
           </div>
