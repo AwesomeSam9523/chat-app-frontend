@@ -10,7 +10,7 @@ export default function TextMessage2({
   myId,
 }: TextMessageProps) {
   // Check if the message is from the bot or the user
-  const isMyMessage = messageObject.id === "user"
+  const isMyMessage = messageObject.id === myId
   const textMessage = messageObject.message;
   const time = messageObject.time;
   console.log("Message Object:", messageObject);

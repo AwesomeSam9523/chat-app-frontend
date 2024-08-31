@@ -61,7 +61,14 @@ export default function Chats() {
 
   async function handleSendMessage() {
     if (!message.trim()) return;
-  
+    const myMessage: MessageObject = {
+      message: message,
+      id: "user",
+      time: getTime(),
+      username: "User",
+    };
+    setInbox((prevInbox) => [...prevInbox, myMessage]);
+    setMessage("");
     setIsLoading(true);
     try {
       console.log("Fetching value with context:", context); // Debugging
@@ -100,9 +107,9 @@ export default function Chats() {
 
   return (
     <>
-      {JSON.stringify(message)}
+      {/* {JSON.stringify(message)} */}
       {JSON.stringify(inbox)}
-      {JSON.stringify(response)}
+      {/* {JSON.stringify(response)} */}
       <div
         className="flex justify-center h-screen bg-[#222222]"
         style={{
