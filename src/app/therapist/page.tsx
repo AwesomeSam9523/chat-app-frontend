@@ -24,7 +24,7 @@ const fetchValue = async (prompt: string, context: string[]) => {
       Please provide clear, concise, and engaging text responses based on the input prompt. 
       Do not use stars or any special characters in your responses. 
       Only output plain text. 
-      Don&apos;t use * or # in response.
+      Dont use * or # in response.
       Make the content short.
       This is the context "${context.join(", ")}".
       The content should be suitable for a general audience and formatted appropriately for web display. 
@@ -77,7 +77,7 @@ export default function Chats() {
       setResponse(responseText);
       if (responseText) {
         const newMessage: MessageObject = {
-          message: responseText,
+          message: responseText(),
           id: "bot",
           time: getTime(),
           username: "Bot",
@@ -92,7 +92,9 @@ export default function Chats() {
       setIsLoading(false);
     }
   }
-
+  
+  
+  
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -100,7 +102,7 @@ export default function Chats() {
   }, [inbox]);
 
   if (Error) {
-    return <div className="text-white">Can&apos;t Connect.. Retry</div>;
+    return <div className="text-white font-">Can't Connect.. Retry</div>;
   }
 
   return (
@@ -116,10 +118,11 @@ export default function Chats() {
           <div className="flex flex-col flex-grow bg-[#0D0D0D] p-8 overflow-y-auto shadow-lg rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 mx-4">
             {inbox.map((messageObject, index) => (
               <TextMessage2
-                key={index}
-                messageObject={messageObject}
-                myId={"user"} // Ensure this is the correct value
-              />
+              key={index}
+              messageObject={messageObject}
+              myId={"user"} // Ensure this is the correct value
+            />
+            
             ))}
             <div ref={messagesEndRef} />
           </div>
