@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 import TextMessage2 from "../components/TextMessage2";
-const { GoogleGenerativeAI } = require("@google/generative-ai");
+import { GoogleGenerativeAI } from "@google/generative-ai"; // Use ES6 import
 
 export interface MessageObject {
   message: string;
@@ -15,22 +15,22 @@ export interface MessageObject {
 const fetchValue = async (prompt: string, context: string[]) => {
   try {
     const genAI = new GoogleGenerativeAI(
-      process.env.NEXT_PUBLIC_GEMINI_API_KEY
+      process.env.NEXT_PUBLIC_GEMINI_API_KEY || ""
     );
     const model = await genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const myPrompt = `
       You are a content generator for my website. 
       Please provide clear, concise, and engaging text responses based on the input prompt. 
-      You are a therapist who provide online therapy. Be very friendly and supportive.
-      Understand the context and provide a response that is relevant to the user's input.
+      You are a therapist who provides online therapy. Be very friendly and supportive.
+      Understand the context and provide a response that is relevant to the user&apos;s input.
       Make them feel comfortable.
       Do not use stars or any special characters in your responses. 
       Only output plain text. 
-      Try to make small responses as it is chat. Not compulsary just a suggestion.
-      Dont use * or # in response.
+      Try to make small responses as it is chat. Not compulsory, just a suggestion.
+      Don&apos;t use * or # in response.
       Make the content short.
-      This is the context "${context.join(", ")}".
+      This is the context: "${context.join(", ")}".
       The content should be suitable for a general audience and formatted appropriately for web display. 
       Make sure the response is informative, accurate, and directly related to the input prompt.
       The prompt is: ${prompt}
@@ -75,13 +75,13 @@ export default function Chats() {
     setMessage("");
     setIsLoading(true);
     try {
-      console.log("Fetching value with context:", context); // Debugging
+      console.log("Fetching value with context:", context);
       const responseText = await fetchValue(message, context);
-      console.log("Response received:", responseText); // Debugging
+      console.log("Response received:", responseText);
       setResponse(responseText);
       if (responseText) {
         const newMessage: MessageObject = {
-          message: responseText(),
+          message: responseText(), // Use responseText directly as it is a string
           id: "bot",
           time: getTime(),
           username: "Bot",
@@ -96,9 +96,7 @@ export default function Chats() {
       setIsLoading(false);
     }
   }
-  
-  
-  
+
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -106,7 +104,7 @@ export default function Chats() {
   }, [inbox]);
 
   if (Error) {
-    return <div className="text-white font-">Can't Connect.. Retry</div>;
+    return <div className="text-white">Can&apos;t Connect.. Retry</div>;
   }
 
   return (
@@ -122,11 +120,10 @@ export default function Chats() {
           <div className="flex flex-col flex-grow bg-[#0D0D0D] p-8 overflow-y-auto shadow-lg rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 mx-4">
             {inbox.map((messageObject, index) => (
               <TextMessage2
-              key={index}
-              messageObject={messageObject}
-              myId={"user"} // Ensure this is the correct value
-            />
-            
+                key={index}
+                messageObject={messageObject}
+                myId={"user"} // Ensure this is the correct value
+              />
             ))}
             <div ref={messagesEndRef} />
           </div>

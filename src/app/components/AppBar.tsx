@@ -48,7 +48,7 @@ export default function AppBar() {
       ) : null}
       {
         <Link href="/therapist" >
-          <button className="text-black">Therapy</button>
+          <button className="hover:text-blue-800 text-black">Therapy</button>
         </Link>
       }
     </div>
