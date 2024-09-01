@@ -13,8 +13,6 @@ export default function TextMessage2({
   const isMyMessage = messageObject.id === myId
   const textMessage = messageObject.message;
   const time = messageObject.time;
-  console.log("Message Object:", messageObject);
-  console.log("My ID:", myId);
   return (
     <div>
       {isMyMessage ? (
