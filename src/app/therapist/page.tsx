@@ -45,7 +45,6 @@ const fetchValue = async (prompt: string, context: string[]) => {
 };
 
 export default function Chats() {
-  const session = useSession();
   const [context, setContext] = useState<string[]>([]);
   const [inbox, setInbox] = useState<MessageObject[]>([]);
   const [message, setMessage] = useState<string>("");
