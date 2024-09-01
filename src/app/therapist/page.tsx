@@ -108,7 +108,7 @@ export default function Chats() {
   return (
     <>
       {/* {JSON.stringify(message)} */}
-      {JSON.stringify(inbox)}
+      {/* {JSON.stringify(inbox)} */}
       {/* {JSON.stringify(response)} */}
       <div
         className="flex justify-center h-screen bg-[#222222]"
