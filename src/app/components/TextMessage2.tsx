@@ -20,7 +20,7 @@ export default function TextMessage2({
           <div className="flex justify-end mt-2">
             <div className="max-w-[45%] w-max bg-[#1A66FF] px-3 py-1.5 rounded-l-xl rounded-tr-xl overflow-wrap break-words">
               <div className="flex flex-col">
-                <div className="text-lg text-white px-2 py-1.5">
+                <div className="text-sm lg:text-lg text-white px-2 py-1.5">
                   {textMessage}
                 </div>
               </div>
@@ -37,7 +37,7 @@ export default function TextMessage2({
           <div className="flex justify-start mt-2">
             <div className="max-w-[45%] w-max bg-[#1B1B1B] px-3 py-1.5 rounded-r-xl rounded-tl-xl overflow-wrap break-words">
               <div className="flex flex-col">
-                <div className="text-lg text-white px-2 py-1.5">
+                <div className="text-sm lg:text-lg text-white px-2 py-1.5">
                   {textMessage}
                 </div>
               </div>
