@@ -28,14 +28,16 @@ const fetchValue = async (prompt: string, context: string[]) => {
       Do not use stars or any special characters in your responses. 
       Only output plain text. 
       Try to make small responses as it is chat. Not compulsory, just a suggestion.
-      Don&apos;t use * or # in response.
+      Don&apos;t use * or # in response.    
       Make the content short.
       This is the context: "${context.join(", ")}".
       The content should be suitable for a general audience and formatted appropriately for web display. 
       Make sure the response is informative, accurate, and directly related to the input prompt.
-      The prompt is: ${prompt}
+      The prompt is: ${prompt}.
     `;
 
+
+    
     const result = await model.generateContent(myPrompt);
     return result.response.text;
   } catch (error) {
@@ -116,6 +118,7 @@ export default function Chats() {
         }}
       >
         <div className="flex flex-col max-w-2xl w-full h-[90vh] mt-8">
+
           <div className="flex flex-col flex-grow bg-[#0D0D0D] p-8 overflow-y-auto shadow-lg rounded-xl bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-50 mx-4">
             {inbox.map((messageObject, index) => (
               <TextMessage2
